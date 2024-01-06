@@ -8,7 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"; // Import SpeedInsi
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Agent42",
+  title: "UTSAA",
   description: "OpenAI Assistant",
   metadataBase: 'https://mydomain.com'
 };

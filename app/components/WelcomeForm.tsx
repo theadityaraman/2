@@ -85,7 +85,7 @@ const WelcomeForm: React.FC<WelcomeFormProps> = ({
           />
           <input
             type="text"
-            placeholder="Assistant Description"
+            placeholder="Enter the specific success criteria that matter to you"
             value={assistantDescription}
             onChange={(e) => setAssistantDescription(e.target.value)}
             required
