@@ -6,8 +6,6 @@ import { statusToProgress as statusToProgressRecord } from './statusToProgress';
 const statusToProgress: Record<string, number> = statusToProgressRecord;
 
 interface WelcomeFormProps {
-  assistantName: string;
-  setAssistantName: (name: string) => void;
   assistantDescription: string;
   setAssistantDescription: (description: string) => void;
   assistantModel: string;
@@ -21,8 +19,6 @@ interface WelcomeFormProps {
 }
 
 const WelcomeForm: React.FC<WelcomeFormProps> = ({
-  assistantName,
-  setAssistantName,
   assistantDescription,
   setAssistantDescription,
   assistantModel,
@@ -77,37 +73,13 @@ const WelcomeForm: React.FC<WelcomeFormProps> = ({
         <form className="flex flex-col space-y-3">
           <input
             type="text"
-            placeholder="Assistant Name"
-            value={assistantName}
-            onChange={(e) => setAssistantName(e.target.value)}
-            required
-            className="p-2 border border-gray-200 rounded-md"
-          />
-          <input
-            type="text"
             placeholder="Enter the specific success criteria that matter to you"
             value={assistantDescription}
             onChange={(e) => setAssistantDescription(e.target.value)}
             required
             className="p-2 border border-gray-200 rounded-md"
+            onClick={(e) => setAssistantModel('gpt-4-1106-preview')}
           />
-          <div>
-            <button
-              type="button"
-              onClick={() => setAssistantModel('gpt-4-1106-preview')}
-              className={`p-1 border border-gray-400 rounded-md ${assistantModel === 'gpt-4-1106-preview' ? 'bg-blue-500 text-white' : ''}`}
-              disabled={process.env.NEXT_PUBLIC_DEMO_MODE === 'true'}
-            >
-              GPT-4
-            </button>
-            <button
-              type="button"
-              onClick={() => setAssistantModel('gpt-3.5-turbo-1106')}
-              className={`p-1 border border-gray-400 rounded-md ${assistantModel === 'gpt-3.5-turbo-1106' ? 'bg-blue-500 text-white' : ''}`}
-            >
-              GPT-3.5
-            </button>
-          </div>
         </form>
         
         <div className="upload-files-container"> 
@@ -121,7 +93,7 @@ const WelcomeForm: React.FC<WelcomeFormProps> = ({
         <button
   type="button"
   onClick={startChatAssistant}
-  disabled={isButtonDisabled || !assistantName || !assistantDescription || fileIds.length === 0|| fileIds.some(fileId => typeof fileId === 'undefined')}
+  disabled={isButtonDisabled || !assistantDescription || fileIds.length === 0|| fileIds.some(fileId => typeof fileId === 'undefined')}
   className="w-full p-2 rounded-md bg-green-500 text-white flex justify-center items-center relative overflow-hidden"
   style={{ 
     position: 'relative', 

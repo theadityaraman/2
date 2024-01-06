@@ -10,17 +10,16 @@ const openai = new OpenAI({
   export async function POST(req: NextRequest) {
     if (req.method === 'POST') {
       try {
-          const { assistantName, assistantModel, assistantDescription, fileIds } = await req.json();
+          const {assistantModel, assistantDescription, fileIds } = await req.json();
   
           // Log the fileIds
           console.log('File IDs:', fileIds);
   
-          if (!assistantName || !assistantModel || !assistantDescription) {
+          if (!assistantModel || !assistantDescription) {
               throw new Error('Missing required assistant parameters');
           }
   
           const assistantOptions: any = {
-              name: assistantName,
               instructions: assistantDescription,
               model: assistantModel,
               tools: [{ "type": "retrieval" }],

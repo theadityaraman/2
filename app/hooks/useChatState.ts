@@ -12,7 +12,6 @@ type FileDetail = {
 export const useChatState = () => {
   
   
-  const [assistantName, setAssistantName] = useState('');
   const [assistantModel, setAssistantModel] = useState('gpt-3.5-turbo-1106');
   const [assistantDescription, setAssistantDescription] = useState('');
   const [inputmessage, setInputmessage] = useState('');
@@ -39,7 +38,6 @@ export const useChatState = () => {
 
 
   return {
-    assistantName, setAssistantName,
     assistantModel, setAssistantModel,
     assistantDescription, setAssistantDescription,
     inputmessage, setInputmessage,

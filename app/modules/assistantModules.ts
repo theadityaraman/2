@@ -11,7 +11,6 @@ import {
 } from '../services/api';
 
 interface AssistantDetails {
-  assistantName: string;
   assistantModel: string;
   assistantDescription: string;
 }
@@ -80,7 +79,6 @@ export const initializeAssistant = async (assistantDetails: AssistantDetails, fi
   console.log('(initialize) -> File IDs:', fileIds);
 
   const assistantData: AssistantDataResponse = await createAssistant(
-      assistantDetails.assistantName,
       assistantDetails.assistantModel,
       assistantDetails.assistantDescription,
       fileIds
