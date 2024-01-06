@@ -2,6 +2,7 @@ import { LoadingCircle } from '../icons';
 import React, { useState, useEffect } from 'react';
 import UploadFiles_Configure from './UploadFiles_Component';
 import { statusToProgress as statusToProgressRecord } from './statusToProgress';
+import Slider from '@mui/material/Slider';
 
 const statusToProgress: Record<string, number> = statusToProgressRecord;
 
@@ -45,6 +46,12 @@ const WelcomeForm: React.FC<WelcomeFormProps> = ({
     console.log("WelcomeForm: New file ID added:", fileId);
     setFileIds(prevFileIds => [...prevFileIds, fileId]);
   };
+
+  const [creativity, setCreativity] = useState(50);
+  const [feasibility, setFeasibility] = useState(50);
+  const [management, setManagement] = useState(50);
+  const [impact, setImpact] = useState(50);
+  const [environmentalImpact, setEnvironmentalImpact] = useState(50);
   
 
   const handleActiveFileIdsUpdate = (activeFileIds: string[]) => {
@@ -80,6 +87,56 @@ const WelcomeForm: React.FC<WelcomeFormProps> = ({
             className="p-2 border border-gray-200 rounded-md"
             onClick={(e) => setAssistantModel('gpt-4-1106-preview')}
           />
+          <Slider
+            value={creativity}
+            onChange={(e, newValue) => {
+              if (typeof newValue === 'number') {
+                setCreativity(newValue);
+              }
+            }}
+            aria-label="Creativity/Novelty"
+            valueLabelDisplay="auto"
+          />
+          <Slider
+            value={feasibility}
+            onChange={(e, newValue) => {
+              if (typeof newValue === 'number') {
+                setFeasibility(newValue);
+              }
+            }}
+            aria-label="Idea Feasibility"
+            valueLabelDisplay="auto"
+          />
+          <Slider
+            value={management}
+            onChange={(e, newValue) => {
+              if (typeof newValue === 'number') {
+                setManagement(newValue);
+              }
+            }}            
+            aria-label="Management"
+            valueLabelDisplay="auto"
+          />
+          <Slider
+            value={impact}
+            onChange={(e, newValue) => {
+              if (typeof newValue === 'number') {
+                setImpact(newValue);
+              }
+            }}  
+            aria-label="Impact"
+            valueLabelDisplay="auto"
+          />
+          <Slider
+            value={environmentalImpact}
+            onChange={(e, newValue) => {
+              if (typeof newValue === 'number') {
+                setEnvironmentalImpact(newValue);
+              }
+            }}              
+            aria-label="Environmental Impact"
+            valueLabelDisplay="auto"
+          />         
         </form>
         
         <div className="upload-files-container"> 

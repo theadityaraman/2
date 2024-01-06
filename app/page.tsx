@@ -43,11 +43,11 @@ export default function Chat() {
     if (chatManager) {
       try {
         console.log('Starting assistant with the following parameters:');
-        // console.log('Assistant Name:', assistantName);
         console.log('Assistant Model:', assistantModel);
         console.log('Assistant Description:', assistantDescription);
         console.log('File IDs:', fileIds);
         console.log('Initial Thread Message:', initialThreadMessage);
+
   
         await chatManager.startAssistant({ assistantModel, assistantDescription }, fileIds, initialThreadMessage);
         
