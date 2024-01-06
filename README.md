@@ -1,1 +1,3 @@
-Satellite Campus presents UTSAA
+# Satellite Campus presents UTSAA
+
+About our Team:
