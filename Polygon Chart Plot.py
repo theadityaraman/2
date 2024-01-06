@@ -1,23 +1,47 @@
-import matplotlib.pyplot as plt
-import numpy as np
-import matplotlib.patches
-import random
+import { useEffect } from 'react';
+import * as d3 from 'd3';
 
-# Number of sides for the polygon
-num_sides = 5
-# Generate random coordinates for the polygon vertices
-a = np.random.rand(num_sides, 2)
-# Create a Polygon object with the random coordinates
-polygon = matplotlib.patches.Polygon(a, fill=False)
+const PolygonPolarPlot = () => {
+  useEffect(() => {
+    const numSides = 5;
+    const width = 500;
+    const height = 500;
+    const radius = Math.min(width, height) / 2;
 
-# Create a figure with a polar subplot
-fig = plt.figure()
-polar = fig.add_subplot(111, projection='polar')
+    // Generate random coordinates for the polygon vertices
+    const points = Array.from({ length: numSides }, () => [
+      Math.random() * 2 * Math.PI,
+      Math.random() * radius
+    ]);
 
-# Add the Polygon to the polar plot
-polar.add_patch(polygon)
+    // Create SVG element
+    const svg = d3.select('#polarPlot')
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height)
+      .append('g')
+      .attr('transform', `translate(${width / 2}, ${height / 2})`);
 
-# Autoscale the plot
-#polar.autoscale()
+    // Create a scale for the radial distance
+    const rScale = d3.scaleLinear()
+      .domain([0, 1])
+      .range([0, radius]);
 
-plt.show()
+    // Create a line generator for the polar plot
+    const lineGenerator = d3.lineRadial()
+      .angle(d => d[0])
+      .radius(d => rScale(d[1]))
+      .curve(d3.curveLinearClosed);
+
+    // Add the polygon to the plot
+    svg.append('path')
+      .datum(points)
+      .attr('d', lineGenerator)
+      .attr('fill', 'none')
+      .attr('stroke', 'black');
+  }, []);
+
+  return <div id="polarPlot"></div>;
+};
+
+export default PolygonPolarPlot;
