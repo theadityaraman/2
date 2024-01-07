@@ -100,6 +100,9 @@ const WelcomeForm: React.FC<WelcomeFormProps> = ({
             aria-label="Creativity/Novelty"
             valueLabelDisplay="auto"
           />
+            <div className="font-medium text-gray-700">
+              Feasibility: {feasibility}
+            </div>
           <Slider
             value={feasibility}
             onChange={(e, newValue) => {
@@ -110,6 +113,9 @@ const WelcomeForm: React.FC<WelcomeFormProps> = ({
             aria-label="Idea Feasibility"
             valueLabelDisplay="auto"
           />
+            <div className="font-medium text-gray-700">
+              Management: {management}
+            </div>
           <Slider
             value={management}
             onChange={(e, newValue) => {
@@ -120,6 +126,9 @@ const WelcomeForm: React.FC<WelcomeFormProps> = ({
             aria-label="Management"
             valueLabelDisplay="auto"
           />
+            <div className="font-medium text-gray-700">
+              Impact: {impact}
+            </div>
           <Slider
             value={impact}
             onChange={(e, newValue) => {
@@ -130,6 +139,9 @@ const WelcomeForm: React.FC<WelcomeFormProps> = ({
             aria-label="Impact"
             valueLabelDisplay="auto"
           />
+            <div className="font-medium text-gray-700">
+              Environmental Impact: {environmentalImpact}
+            </div>
           <Slider
             value={environmentalImpact}
             onChange={(e, newValue) => {
