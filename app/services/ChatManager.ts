@@ -129,6 +129,7 @@ class ChatManager {
         this.state.setStatusMessage('Received messages...');
         
         // Add the assistant's response to the messages
+        
         const newMessage = { role: 'assistant', content: response };
         this.state.setStatusMessage('Adding messages to chat...');
         
@@ -253,6 +254,13 @@ async sendMessage(input: string, files: File[], fileDetails: any[]): Promise<voi
       const response = await fetchAssistantResponse(this.state.runId as string, this.state.threadId as string, this.state.setStatusMessage, this.state.setProgress,0);
       console.log('Assistant response fetched. Adding to chat state...');
       
+      const image = await openai.createImage({
+        model: "dall-e-3",
+        prompt: response,
+        n: 1,
+        size: "1024x1024",
+      });
+      let image_url = image.data.data[0].url;
       
       // Add the assistant's response to the messages
       const newAssistantMessage = { role: 'assistant', content: response };
@@ -271,7 +279,11 @@ async sendMessage(input: string, files: File[], fileDetails: any[]): Promise<voi
     this.state.setProgress(0);
     this.state.isSending = false; 
   }
+
+  
 }
+
+
 
   // Method to get the current chat state
   getChatState(): ChatState {
