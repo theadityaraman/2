@@ -37,3 +37,25 @@ after the sample data set, the problems and solutions, is uploaded and fed to UT
 A percentage score is given to each solution based on the previous input of weighted values and the top ten highest scoring solutions are listed. 
 final product is organized with the criteria of a lean canvass plan -  an entrepreneur-focused planning tool that identifies the key aspects of a business
 final product can be exported as a PDF 
+
+
+### Installation
+1. **Clone the Repository**:
+   ```
+   git clone https://github.com/admineral/OpenAI-Assistant-API-Chat.git
+   ```
+2. **Install Dependencies**:
+   Navigate to the project directory and run:
+   ```
+   npm install
+   ```
+3. **Environment Setup**:
+   Create a `.env` file in the root directory and add your OpenAI API key:
+   ```
+   OPENAI_API_KEY=your_openai_api_key
+   ```
+4. **Run the Application**:
+   Start the server with:
+   ```
+   npm run dev
+   ```
