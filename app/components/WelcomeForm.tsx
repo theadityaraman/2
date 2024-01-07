@@ -87,6 +87,9 @@ const WelcomeForm: React.FC<WelcomeFormProps> = ({
             className="p-2 border border-gray-200 rounded-md"
             onClick={(e) => setAssistantModel('gpt-4-1106-preview')}
           />
+            <div className="font-medium text-gray-700">
+              Creativity: {creativity}
+            </div>
           <Slider
             value={creativity}
             onChange={(e, newValue) => {
